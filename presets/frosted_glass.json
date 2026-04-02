@@ -1,0 +1,38 @@
+{
+    "version": 1,
+    "name": "Frosted Glass",
+    "text": "LAZART",
+    "font": {
+        "family": "Arial",
+        "path": null
+    },
+    "layout": {
+        "mode": "relative",
+        "size_rel_width": 0.22,
+        "position": {
+            "x_pct": 0.50,
+            "y_pct": 0.50,
+            "anchor": "center"
+        },
+        "rotation_deg": -8,
+        "tracking": 0.02,
+        "feather_px": 2
+    },
+    "effect": {
+        "type": "frosted_glass",
+        "params": {
+            "blur_radius": 15,
+            "brightness_boost": 1.15
+        },
+        "blend_mode": "normal",
+        "strength": 0.90
+    },
+    "random": {
+        "seed": 12345
+    },
+    "export": {
+        "keep_format": true,
+        "suffix": "__signed__frosted",
+        "include_timestamp": false
+    }
+}

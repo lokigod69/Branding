@@ -1,0 +1,39 @@
+{
+    "version": 1,
+    "name": "High-Contrast Burn",
+    "text": "LAZART",
+    "font": {
+        "family": "Arial",
+        "path": null
+    },
+    "layout": {
+        "mode": "relative",
+        "size_rel_width": 0.22,
+        "position": {
+            "x_pct": 0.50,
+            "y_pct": 0.50,
+            "anchor": "center"
+        },
+        "rotation_deg": -8,
+        "tracking": 0.02,
+        "feather_px": 2
+    },
+    "effect": {
+        "type": "high_contrast_burn",
+        "params": {
+            "shadow_gamma": 0.4,
+            "highlight_gamma": 1.8,
+            "midpoint": 0.5
+        },
+        "blend_mode": "normal",
+        "strength": 0.85
+    },
+    "random": {
+        "seed": 12345
+    },
+    "export": {
+        "keep_format": true,
+        "suffix": "__signed__hi-burn",
+        "include_timestamp": false
+    }
+}

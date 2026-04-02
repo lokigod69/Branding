@@ -1,0 +1,37 @@
+{
+    "version": 1,
+    "name": "Channel Invert (Red)",
+    "text": "LAZART",
+    "font": {
+        "family": "Arial",
+        "path": null
+    },
+    "layout": {
+        "mode": "relative",
+        "size_rel_width": 0.22,
+        "position": {
+            "x_pct": 0.50,
+            "y_pct": 0.50,
+            "anchor": "center"
+        },
+        "rotation_deg": -8,
+        "tracking": 0.02,
+        "feather_px": 2
+    },
+    "effect": {
+        "type": "channel_invert",
+        "params": {
+            "channel": "r"
+        },
+        "blend_mode": "normal",
+        "strength": 0.80
+    },
+    "random": {
+        "seed": 12345
+    },
+    "export": {
+        "keep_format": true,
+        "suffix": "__signed__ch-inv-r",
+        "include_timestamp": false
+    }
+}

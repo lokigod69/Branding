@@ -1,0 +1,500 @@
+/* ═══════════════════════════════════════════════════════════
+   Print Analysis Mode — Styles
+   Uses existing theme CSS vars for cohesive look
+   ═══════════════════════════════════════════════════════════ */
+
+.analysis-mode {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    gap: 0;
+}
+
+/* ── Canvas / Drop Area ────────────────────────────────── */
+
+.analysis-canvas-area {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: var(--bg-canvas, #0d0d0d);
+    overflow: hidden;
+}
+
+.analysis-dropzone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 48px;
+    border: 2px dashed var(--border-medium);
+    border-radius: var(--radius-md, 12px);
+    cursor: pointer;
+    transition: all 0.25s;
+    max-width: 420px;
+    text-align: center;
+}
+
+.analysis-dropzone:hover,
+.analysis-dropzone.active {
+    border-color: var(--accent-cyan);
+    background: rgba(0, 229, 255, 0.04);
+}
+
+.analysis-dropzone .dropzone-icon {
+    font-size: 3rem;
+    opacity: 0.5;
+}
+
+.analysis-dropzone h3 {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+}
+
+.analysis-dropzone p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+}
+
+/* ── A4 Frame & Image Container ────────────────────────── */
+
+.analysis-frame-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.analysis-a4-frame {
+    position: relative;
+    border: 2px dashed var(--accent-cyan);
+    box-shadow:
+        0 0 0 3000px rgba(0, 0, 0, 0.55),
+        0 0 20px rgba(0, 229, 255, 0.15);
+    overflow: hidden;
+    background: transparent;
+}
+
+.analysis-a4-frame .a4-label {
+    position: absolute;
+    top: -28px;
+    left: 0;
+    font-size: 0.68rem;
+    color: var(--accent-cyan);
+    font-family: var(--font-mono);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 2px 8px;
+    border-radius: 3px;
+    white-space: nowrap;
+}
+
+.analysis-image {
+    position: absolute;
+    user-select: none;
+    -webkit-user-drag: none;
+    image-rendering: auto;
+}
+
+.analysis-image.dragging {
+    cursor: grabbing;
+}
+
+.analysis-image:not(.dragging) {
+    cursor: grab;
+    transition: transform 0.05s ease-out;
+}
+
+/* Ghost overflow — faint edges outside A4 frame */
+.analysis-overflow-ghost {
+    position: absolute;
+    opacity: 0.15;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    z-index: 0;
+    filter: saturate(0.5);
+    transition: transform 0.05s ease-out;
+}
+
+/* A4 corner markers */
+.analysis-a4-frame .corner-mark {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-color: var(--accent-cyan);
+    border-style: solid;
+    border-width: 0;
+    opacity: 0.6;
+}
+
+.corner-mark.tl {
+    top: 0;
+    left: 0;
+    border-top-width: 2px;
+    border-left-width: 2px;
+}
+
+.corner-mark.tr {
+    top: 0;
+    right: 0;
+    border-top-width: 2px;
+    border-right-width: 2px;
+}
+
+.corner-mark.bl {
+    bottom: 0;
+    left: 0;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+}
+
+.corner-mark.br {
+    bottom: 0;
+    right: 0;
+    border-bottom-width: 2px;
+    border-right-width: 2px;
+}
+
+/* ── Info Panel (right) ────────────────────────────────── */
+
+.analysis-panel {
+    width: 310px;
+    min-width: 310px;
+    background: var(--bg-panel, #141414);
+    border-left: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.06));
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.analysis-panel .panel-header {
+    padding: 16px 18px;
+    border-bottom: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.06));
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.analysis-panel .panel-header h2 {
+    margin: 0;
+    font-size: 0.88rem;
+    color: var(--text-primary);
+    font-weight: 700;
+    letter-spacing: 0.03em;
+}
+
+.analysis-panel .panel-body {
+    padding: 14px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* ── Info sections ─────────────────────────────────────── */
+
+.analysis-section {
+    margin-bottom: 6px;
+}
+
+.analysis-section-title {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+}
+
+.analysis-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    font-size: 0.82rem;
+}
+
+.analysis-info-row .info-label {
+    color: var(--text-secondary);
+}
+
+.analysis-info-row .info-value {
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+.analysis-info-row .info-value.good {
+    color: #4caf50;
+}
+
+.analysis-info-row .info-value.warn {
+    color: #ff9800;
+}
+
+.analysis-info-row .info-value.bad {
+    color: #f44336;
+}
+
+/* ── DPI Badge ─────────────────────────────────────────── */
+
+.dpi-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: var(--radius-sm, 6px);
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 1rem;
+    margin: 6px 0 10px;
+}
+
+.dpi-badge.good {
+    background: rgba(76, 175, 80, 0.12);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    color: #66bb6a;
+}
+
+.dpi-badge.warn {
+    background: rgba(255, 152, 0, 0.12);
+    border: 1px solid rgba(255, 152, 0, 0.3);
+    color: #ffa726;
+}
+
+.dpi-badge.bad {
+    background: rgba(244, 67, 54, 0.12);
+    border: 1px solid rgba(244, 67, 54, 0.3);
+    color: #ef5350;
+}
+
+/* ── Result Box (upscale target) ───────────────────────── */
+
+.upscale-result-box {
+    background: rgba(0, 229, 255, 0.06);
+    border: 1px solid rgba(0, 229, 255, 0.2);
+    border-radius: var(--radius-sm, 6px);
+    padding: 14px 16px;
+    margin: 8px 0;
+}
+
+.upscale-result-box .result-title {
+    font-size: 0.7rem;
+    color: var(--accent-cyan);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+}
+
+.upscale-result-box .result-value {
+    font-family: var(--font-mono);
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.upscale-result-box .result-factor {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--accent-ember);
+    font-weight: 600;
+}
+
+/* ── Buttons ───────────────────────────────────────────── */
+
+.analysis-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: var(--radius-sm, 6px);
+    border: 1px solid var(--border-medium);
+    background: transparent;
+    color: var(--text-primary);
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: 100%;
+    font-family: var(--font-sans);
+}
+
+.analysis-btn:hover {
+    border-color: var(--accent-ember);
+    background: rgba(255, 69, 0, 0.08);
+}
+
+.analysis-btn.primary {
+    background: var(--accent-ember);
+    border-color: var(--accent-ember);
+    color: #fff;
+}
+
+.analysis-btn.primary:hover {
+    background: #ff5a1f;
+}
+
+.analysis-btn.secondary {
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+}
+
+.analysis-btn.secondary:hover {
+    background: rgba(0, 229, 255, 0.08);
+}
+
+/* ── Orientation Toggle ────────────────────────────────── */
+
+.orientation-toggle {
+    display: flex;
+    border-radius: var(--radius-sm, 6px);
+    overflow: hidden;
+    border: 1px solid var(--border-medium);
+}
+
+.orientation-toggle button {
+    flex: 1;
+    padding: 7px 12px;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: var(--font-sans);
+}
+
+.orientation-toggle button.active {
+    background: var(--accent-cyan);
+    color: #000;
+}
+
+.orientation-toggle button:not(.active):hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* ── Section Divider ───────────────────────────────────── */
+
+.analysis-divider {
+    height: 1px;
+    background: var(--border-subtle, rgba(255, 255, 255, 0.06));
+    margin: 10px 0;
+}
+
+/* ── Crop info ─────────────────────────────────────────── */
+
+.crop-info-box {
+    background: rgba(255, 152, 0, 0.06);
+    border: 1px solid rgba(255, 152, 0, 0.2);
+    border-radius: var(--radius-sm, 6px);
+    padding: 10px 14px;
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.crop-info-box strong {
+    color: #ffa726;
+}
+
+/* ── No-image placeholder in panel ─────────────────────── */
+
+.analysis-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    gap: 12px;
+    padding: 40px 20px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.analysis-placeholder .placeholder-icon {
+    font-size: 2.5rem;
+    opacity: 0.3;
+}
+
+/* ── Copied toast ──────────────────────────────────────── */
+
+.copy-toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 229, 255, 0.9);
+    color: #000;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    z-index: 9999;
+    animation: copyToastIn 0.3s ease-out, copyToastOut 0.3s ease-in 1.5s forwards;
+    pointer-events: none;
+}
+
+@keyframes copyToastIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+@keyframes copyToastOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+/* ── Reset button floating ─────────────────────────────── */
+
+.analysis-floating-actions {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    gap: 6px;
+    z-index: 20;
+}
+
+.analysis-floating-actions button {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-sm, 6px);
+    color: var(--text-secondary);
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: var(--font-sans);
+}
+
+.analysis-floating-actions button:hover {
+    border-color: var(--accent-ember);
+    color: var(--accent-ember);
+}
